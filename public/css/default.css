@@ -1,4 +1,4 @@
-*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+/**, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }*/
 /*body, html { font-size: 100%; padding: 0; margin: 0; }*/
 
 /* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
@@ -13,7 +13,7 @@ body {
 
 button {
 	border: none;
-	padding: 0.5em 0.7em;
+	padding: 0.3em 0.5em;
 	/*background: #c0392b;*/
 	background: #306596;
 	color: #fff;
