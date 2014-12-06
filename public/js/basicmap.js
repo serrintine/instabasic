@@ -175,33 +175,33 @@
             "MA":{basiclvl:0,pop:645966+182544+153060},
             "MI":{basiclvl:0,pop:681090+192294+134141},
             "MN":{basiclvl:0,pop:400070+294873+110742},
-            "MS":{basiclvl:0, pop:172638+71012+44578},
-            "MO":{basiclvl:0, pop:467007+318416+164122},
+            "MS":{basiclvl:0,pop:172638+71012+44578},
+            "MO":{basiclvl:0,pop:467007+318416+164122},
             "MT":{basiclvl:0,pop:104170+69122+58505},
-            "NE":{basiclvl:0, pop:434353+268738+53663},
-            "NV":{basiclvl:0, pop:583736+225221+270811},
-            "NH":{basiclvl:0, pop:110378+87137+42419},
-            "NJ":{basiclvl:0, pop:278427+257342+145948},
-            "NM":{basiclvl:0, pop:558000+101324+90818},
-            "NY":{basiclvl:0, pop:8405837+258959+210358},
-            "NC":{basiclvl:0, pop:792862+431746+279639},
-            "ND":{basiclvl:0, pop:113658+67034+54932},
-            "OH":{basiclvl:0, pop:822553+390113+297517},
-            "OK":{basiclvl:0, pop:610613+398121+118197},
-            "OR":{basiclvl:0, pop:609456+160614+159190},
-            "PA":{basiclvl:0, pop:1553165+305841+118577},
-            "RI":{basiclvl:0, pop:177994+82672+80387},
-            "SC":{basiclvl:0, pop:133358+127999+104054},
-            "SD":{basiclvl:0, pop:153888+67956+27333},
-            "TN":{basiclvl:0, pop:653450+626681+183270},
-            "TX":{basiclvl:0, pop:2195914+1409019+1257676},
-            "UT":{basiclvl:0, pop:191180+132434+115919},
-            "VT":{basiclvl:0, pop:42284+17904+16495},
-            "VA":{basiclvl:0, pop:448479+246392+232977},
-            "WA":{basiclvl:0, pop:652405+210721+203446},
-            "WV":{basiclvl:0, pop:50821+49177+31186},
-            "WI":{basiclvl:0, pop:599164+243344+104779},
-            "WY":{basiclvl:0, pop:61537+57813+31681}
+            "NE":{basiclvl:0,pop:434353+268738+53663},
+            "NV":{basiclvl:0,pop:583736+225221+270811},
+            "NH":{basiclvl:0,pop:110378+87137+42419},
+            "NJ":{basiclvl:0,pop:278427+257342+145948},
+            "NM":{basiclvl:0,pop:558000+101324+90818},
+            "NY":{basiclvl:0,pop:8405837+258959+210358},
+            "NC":{basiclvl:0,pop:792862+431746+279639},
+            "ND":{basiclvl:0,pop:113658+67034+54932},
+            "OH":{basiclvl:0,pop:822553+390113+297517},
+            "OK":{basiclvl:0,pop:610613+398121+118197},
+            "OR":{basiclvl:0,pop:609456+160614+159190},
+            "PA":{basiclvl:0,pop:1553165+305841+118577},
+            "RI":{basiclvl:0,pop:177994+82672+80387},
+            "SC":{basiclvl:0,pop:133358+127999+104054},
+            "SD":{basiclvl:0,pop:153888+67956+27333},
+            "TN":{basiclvl:0,pop:653450+626681+183270},
+            "TX":{basiclvl:0,pop:2195914+1409019+1257676},
+            "UT":{basiclvl:0,pop:191180+132434+115919},
+            "VT":{basiclvl:0,pop:42284+17904+16495},
+            "VA":{basiclvl:0,pop:448479+246392+232977},
+            "WA":{basiclvl:0,pop:652405+210721+203446},
+            "WV":{basiclvl:0,pop:50821+49177+31186},
+            "WI":{basiclvl:0,pop:599164+243344+104779},
+            "WY":{basiclvl:0,pop:61537+57813+31681}
             }
     });
     basic.labels();
@@ -247,7 +247,6 @@
         var margin = {top: 10, right: 20, bottom: 20, left: 75},
             width = 550 - margin.left - margin.right,
             height = 400 - margin.top - margin.bottom;
-
 
         var x = d3.scale.ordinal()
             .domain(dataKeyVal.map(function(d) { return d.tag; } ))
@@ -304,8 +303,7 @@
             .attr("y", function(d) { return y(d.counts) + 3; })
             .attr("dy", ".75em")
             .text(function(d) { return d.counts; })
-
-        };
+    };
 
 
     var socket = io.connect('http://instabasic.herokuapp.com');
@@ -430,10 +428,11 @@
                                 show_tags = show_tags.slice(0, -2);
                             }
                             
-                            var post_out = 'Someone in <span class="loc">' + city.name + ', ' + city.state + '</span> posted <a href="' + post.link + '" target="_blank">' + link + '</a> <span class="hashtag">(' + show_tags + ')</span>';
+                            var post_out = 'Someone in <span class="loc">' + city.name + ', ' + city.state +
+                                           '</span> posted <a href="' + post.link + '" target="_blank">' + link +
+                                           '</a> <span class="hashtag">(' + show_tags + ')</span>';
                             update_post(post_out, _logLimit);
                             
-
                             total_posts += 1;
                             var new_time = new Date().getTime();
                             /*var new_entry = {};
@@ -546,59 +545,6 @@
         "WI":{"Milwaukee":0,"Madison":0,"Green Bay":0},
         "WY":{"Cheyenne":0,"Casper":0,"Laramie":0}
     }
-
-    var cityPops = {
-        "AL": 212113+201332+194899,
-        "AK": 300950+32167+32070,
-        "AZ": 1567924+526116+457587,
-        "AR": 197357+87650+78960,
-        "CA": 3884307+1355896+998537,
-        "CO": 566974+439886+345803,
-        "CT": 147216+130660+125017,
-        "DE": 71292+36047+278427,
-        "FL": 70145+419777+186411,
-        "GA": 447841+197872+202824,
-        "HI": 390738+43263+11975,
-        "ID": 214237+85930+58292,
-        "IL": 2718782+199963+150251,
-        "IN": 843393+253691+120310,
-        "IA": 207510+128119+102157,
-        "KA": 386552+181260+148483,
-        "KY": 609893+308428+58083,
-        "LA": 378715+200327+229426,
-        "ME": 609456+41592+32817,
-        "MD": 622104+67435+65690,
-        "MA": 645966+182544+153060,
-        "MI": 681090+192294+134141,
-        "MN": 400070+294873+110742,
-        "MS":172638+71012+44578,
-        "MO":467007+318416+164122,
-        "MT": 104170+69122+58505,
-        "NE":434353+268738+53663,
-        "NV":583736+225221+270811,
-        "NH":110378+87137+42419,
-        "NJ":278427+257342+145948,
-        "NM":558000+101324+90818,
-        "NY":8405837+258959+210358,
-        "NC":792862+431746+279639,
-        "ND":113658+67034+54932,
-        "OH":822553+390113+297517,
-        "OK":610613+398121+118197,
-        "OR":609456+160614+159190,
-        "PA":1553165+305841+118577,
-        "RI":177994+82672+80387,
-        "SC":133358+127999+104054,
-        "SD":153888+67956+27333,
-        "TN":653450+626681+183270,
-        "TX":2195914+1409019+1257676,
-        "UT":191180+132434+115919,
-        "VT":42284+17904+16495,
-        "VA":448479+246392+232977,
-        "WA":652405+210721+203446,
-        "WV":50821+49177+31186,
-        "WI":599164+243344+104779,
-        "WY":61537+57813+31681
-        };
 
     var minCityArr =
     {"cities":[
