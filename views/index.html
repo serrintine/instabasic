@@ -2,10 +2,8 @@
 <html>
 <head>
   <title>Instabasic: #basic</title>
-  <link rel="shortcut icon" href="/img/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
-  <link rel="stylesheet" type="text/css" href="/css/default.css" />
-  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link href='/css/style.css' rel='stylesheet' type='text/css' />
   <!--<link href='/css/epoch.min.css' rel='stylesheet' type='text/css'>-->
   <script src='/js/jquery-1.9.1.min.js' type="text/javascript"></script>
   <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
@@ -13,7 +11,9 @@
   <script src="/js/datamaps.usa.min.js" type="text/javascript"></script>
   <!--<script src="/js/epoch.min.js" type="text/javascript"></script>-->
   <script src="/js/socket.io.min.js" type="text/javascript"></script>
-  <script src="/js/modernizr.custom.js" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <script src="/js/modernizr.custom.js"></script>
 
   <script>
       $(document).ready(function() {
@@ -123,22 +123,21 @@
       <h3>NOTES</h3>
       <div>
         <p>Some details that need to be ironed out:</p>
-          <ul>
-            <li><strong>Hashtag checkboxes:</strong> Currently they do nothing. Eventually should be able to select tags.</li>
-            <li><strong>Database backend:</strong> Data should be parsed more cleanly before going into a database. Need a better database server.</li>
-            <li><strong>API bottleneck:</strong> Instagram's 5000 requests/hour limit throttles full-scale deployment. Need to configure a single server for handling requests and serving to multiple instances of this page.</li>
-            <li><strong>HTML5/CSS3:</strong> Code cleanup and updates in general really. Should make better use of latest specs.</li>
-          </ul>
+        <ul>
+          <li><strong>Hashtag checkboxes:</strong> Currently they do nothing. Eventually should be able to select tags.</li>
+          <li><strong>Database backend:</strong> Data should be parsed more cleanly before going into a database. Need a better database server.</li>
+          <li><strong>API bottleneck:</strong> Instagram's 5000 requests/hour limit throttles full-scale deployment. Need to configure a single server for handling requests and serving to multiple instances of this page.</li>
+          <li><strong>HTML5/CSS3:</strong> Code cleanup and updates in general really. Should make better use of latest specs.</li>
+        </ul>
         <button class="md-close">Close!</button>
       </div>
-    </div>
+      </div>
   </div>
   <div class="container">
   <div id="header">
     <span class="about-link">
       <a href="http://instabasic.herokuapp.com/stats.html" target="_blank">stats</a> & 
-      <a id="about-link" href="">about</a> &
-      <a class="md-trigger md-setperspective" data-modal="modal-17" href="">note</a>
+      <a id="about-link" class="md-trigger md-setperspective" data-modal="modal-17" href="">about</a>
     </span>
     <h1 class="title">Instabasic Map</h1>
   </div>
@@ -202,9 +201,9 @@
   </div>
   
   <div class="md-overlay"></div>
-
-  <script src="/js/classie.js" type="text/javascript"></script>
-  <script src="/js/modalEffects.js" type="text/javascript"></script>
+  
+  <script src="/js/classie.js"></script>
+  <script src="/js/modalEffects.js"></script>
 
     <!-- for the blur effect -->
     <!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
