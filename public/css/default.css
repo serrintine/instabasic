@@ -13,14 +13,12 @@ body {
 
 button {
 	border: none;
-	padding: 0.6em 1.2em;
+	padding: 0.6em 0.8em;
 	/*background: #c0392b;*/
 	background: #306596;
 	color: #fff;
-	font-family: 'Lato', Calibri, Arial, sans-serif;
-	font-size: 1em;
-	letter-spacing: 1px;
-	text-transform: uppercase;
+	/*font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-size: 1em;*/
 	cursor: pointer;
 	display: inline-block;
 	margin: 3px 2px;
