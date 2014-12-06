@@ -201,8 +201,9 @@ label {
 }
 
 .foot p {
-    font-size: .9em;
-    margin-bottom: .9em;
+    /*font-size: .9em;
+    margin-bottom: .9em;*/
+    margin-bottom: 1em;
 }
 
 .conStatus {
