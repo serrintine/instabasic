@@ -39,7 +39,7 @@
         }
 
         if (val != null) {
-            newRadius += Math.sqrt(tags[val].radius);
+            newRadius += Math.sqrt(basicArr[to_add.state][to_add.name]);
             tags.splice(val, 1);
         }
         
