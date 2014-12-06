@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+  <title>Instabasic: #basic</title>
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link href='/css/style.css' rel='stylesheet' type='text/css'>
+  <!--<link href='/css/epoch.min.css' rel='stylesheet' type='text/css'>-->
+  <script src='/js/jquery-1.9.1.min.js' type="text/javascript"></script>
+  <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+  <script src="http://d3js.org/topojson.v1.min.js" type="text/javascript"></script>
+  <script src="/js/datamaps.usa.min.js" type="text/javascript"></script>
+  <!--<script src="/js/epoch.min.js" type="text/javascript"></script>-->
+  <script src="/js/socket.io.min.js" type="text/javascript"></script>
+
+  <script>
+      $(document).ready(function() {
+          $('#about-link').click(function() {
+            $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+            return false;
+          });
+          var hashtags = {
+              'selfie': ['#selfie'],
+              'nofilter': ['#nofilter'],
+              'starbucks': ['#starbucks'],
+              'brunch': ['#brunch'],
+              'nomakeup': ['#nomakeup'],
+              'blessed': ['#blessed'],
+              'sweaterweather': ['#sweaterweather'],
+              'yolo': ['#yolo']
+          }
+          var make_click_handler = function($box, hashtag) {
+              return function() {
+                 if ($box.is(':checked')) {
+                     enable(hashtag);
+                 } else {
+                     disable(hashtag);
+                 }
+              }
+          };
+          var return_hashtag_list = function() {
+              var enabled_hashtags = window.location.hash.slice(1).split(',');
+              for (var i = 0; i < enabled_hashtags.length +1; i ++) {
+                  if (enabled_hashtags[i] == '') {
+                      enabled_hashtags.splice(i, 1);
+                  }
+              }
+              return enabled_hashtags;
+          }
+          var set_hashtag_list = function (hashtags) {
+              if (hashtags[0] == '') {
+                  hashtags.splice(0, 1);
+              }
+              window.location.hash = '#' + hashtags.join(',');
+          }
+          var enable = function(hashtag) {
+              var enabled_hashtags = return_hashtag_list();
+              if (enabled_hashtags.indexOf(hashtag) < 0) {
+                  enabled_hashtags.push(hashtag);
+                  set_hashtag_list(enabled_hashtags);
+              }
+          };
+          var disable = function(hashtag) {
+              var enabled_hashtags = return_hashtag_list();
+              var hashtag_index = enabled_hashtags.indexOf(hashtag);
+              if (hashtag_index >= 0) {
+                  enabled_hashtags.splice(hashtag_index, 1);
+              }
+              set_hashtag_list(enabled_hashtags);
+          };
+          window.onhashchange = function () {
+              var enabled_hashtags = return_hashtag_list();
+              /*for (hashtag in SOCKETS) {
+                  if (enabled_hashtags.indexOf(hashtag) >= 0) {
+                      if (!SOCKETS[hashtag].connection || SOCKETS[hashtag].connection.readyhashtag == 3) {
+                          SOCKETS[hashtag].connect();
+                          $('#' + hashtag + '-enable').prop('checked', true)
+                      }
+                  } else {
+                      if ($('#' + hashtag + '-enable').is(':checked')) {
+                          $('#' + hashtag + '-enable').prop('checked', false)
+                      }
+                      if (SOCKETS[hashtag].connection) {
+                          SOCKETS[hashtag].close();
+                      }
+                  }
+              }*/
+              set_hashtag_list(enabled_hashtags);
+          }
+          for (hashtag in hashtags) {
+              if (hashtags.hasOwnProperty(hashtag)) {
+                  $('#hashtag-boxes').append('<p><input type="checkbox" name="' + hashtags[hashtag][0] + '" id="' + hashtag + '-enable"/><label for="' + hashtag + '-enable">' + hashtags[hashtag][0] + ' <span class="conStatus" id="' + hashtag + '-status"></span></label></p>');
+                  //SOCKETS[hashtag] = new wikipediaSocket.init(hashtags[hashtag][1], hashtag);
+                  var box = $('#' + hashtag + '-enable');
+                  if (box.is(':checked')) {
+                      enable(hashtag);
+                  }
+                  box.click(make_click_handler(box, hashtag));
+              }
+          }
+          var enabled_hashtags = return_hashtag_list();
+          console.log(enabled_hashtags);
+          if (!enabled_hashtags.length) {
+              enabled_hashtags.push('selfie');
+              enabled_hashtags.push('nofilter');
+              enabled_hashtags.push('starbucks');
+              enabled_hashtags.push('brunch');
+          }
+          for (var i = 0; i < enabled_hashtags.length + 1; i ++) {
+              var hashtag = enabled_hashtags[i];
+              $('#' + hashtag + '-enable').prop('checked', true);
+              enable(hashtag);
+          }
+          return;
+      });
+  </script>
+</head>
+<body>
+  <div id="header">
+    <span class="about-link">
+      <a href="http://instabasic.herokuapp.com/stats.html" target="_blank">stats</a> & 
+      <a id="about-link" href="">about</a>
+    </span>
+    <h1 class="title">Instabasic Map</h1>
+  </div>
+  <div class="content">
+    <div id="wrapper">
+      <div id="basic-map"></div>
+    </div>
+    <div class="bg">
+      <div class="post-list">
+        <h3>Recent Posts</h3>
+        <ul id="post-list"></ul>
+        <div class="note">
+          <p id="post-count"></p>
+        </div>
+      </div>
+    </div>
+    <div class="basic-levels">
+      <div class="bar-chart-container">
+        <svg class="vertical-bar-chart"></svg>
+      </div>
+      <div class="basic-rankings"><h3>Top 5 Basic States</h3></div>
+      <div class='clear'><br/></div>
+    </div>
+    <!--<div id="lineChart" style="width: 800px; height: 200px"></div>-->
+    <div class="foot">
+      <h3>Basic Hashtags</h3>
+      <div id="hashtag-boxes"></div>
+      <div class='clear'><br/></div>
+      <br/>
+      <h3><a name="about"></a>What is this map?</h3>
+      <p>
+        <a href="http://instagram.com">Instagram</a>, an online image and video sharing application,
+        has over 150 million active users posting pictures and video clips every month, each accompanied by hashtags.
+        Using our own custom created formula and the Instagram API, we analyze these hashtags, calculate the basicness
+        of each U.S. state by its 3 biggest cities, and display our results in the map above.
+      </p>
+      <p>
+        All of the data displayed on this page are being requested from Instagram and processed in real time.
+        Basicness is calculated from a selected group of tags, such as #selfie, #nofilter, #brunch, #starbucks, etc.
+        You can select which tags to be considered as basic.
+      </p>
+      <p>
+        The 'basic level' score is computed by multiplying the number of Instagram tags per state by a multiplier of 1,000,000 
+        and dividing that value by the combined population of the 3 biggest cities per state. That way, a state's population 
+        is also accounted for when deciding how basic it is.
+      <p>
+        Built using <a href="http://d3js.org" target="_blank">D3</a>,
+        <a href="http://datamaps.github.io" target="_blank">DataMaps</a>,
+        <a href="http://socket.io/" target="_blank">Socket.IO</a>,
+        <a href="http://nodejs.org/" target="_blank">Node.js</a>, and the
+        <a href="http://instagram.com/developer" target="_blank">Instagram API</a>.
+        Source available on <a href="https://github.com/serrintine/instabasic" target="_blank">GitHub</a>.
+      </p>
+      <p>
+        Built by <a href="https://github.com/svkhadke" target="_blank">svkhadke</a>,
+        <a href="https://github.com/rlou" target="_blank">rlou</a>, and
+        <a href="https://github.com/serrintine" target="_blank">serrintine</a>.
+      </p>
+    </div>
+  </div>
+    
+  <script src="/js/basicmap.js" type="text/javascript"></script>
+</body>
+</html>
