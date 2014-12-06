@@ -2,18 +2,18 @@
 <html>
 <head>
   <title>Instabasic: #basic</title>
-  <link rel="shortcut icon" href="/img/favicon.ico">
-  <link href='/css/style.css' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="/img/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/component.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <!--<link href='/css/epoch.min.css' rel='stylesheet' type='text/css'>-->
   <script src='/js/jquery-1.9.1.min.js' type="text/javascript"></script>
+  <script src="/js/modernizr.custom.js" type="text/javascript"></script>
   <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
   <script src="http://d3js.org/topojson.v1.min.js" type="text/javascript"></script>
   <script src="/js/datamaps.usa.min.js" type="text/javascript"></script>
   <!--<script src="/js/epoch.min.js" type="text/javascript"></script>-->
   <script src="/js/socket.io.min.js" type="text/javascript"></script>
-  <link rel="stylesheet" type="text/css" href="/css/default.css" />
-    <link rel="stylesheet" type="text/css" href="/css/component.css" />
-    <script src="/js/modernizr.custom.js"></script>
 
   <script>
       $(document).ready(function() {
@@ -120,13 +120,14 @@
 <body>
   <div class="md-modal md-effect-17" id="modal-17">
     <div class="md-content">
-      <h3>SOME NOTES</h3>
+      <h3>NOTES</h3>
       <div>
         <p>Some details that need to be ironed out:</p>
           <ul>
             <li><strong>Hashtag checkboxes:</strong> Currently they do nothing. Eventually should be able to select tags.</li>
             <li><strong>Database backend:</strong> Data should be parsed more cleanly before going into a database. Need a better database server.</li>
             <li><strong>API bottleneck:</strong> Instagram's 5000 requests/hour limit throttles full-scale deployment. Need to configure a single server for handling requests and serving to multiple instances of this page.</li>
+            <li><strong>HTML5/CSS3:</strong> Code cleanup and updates in general really. Should make better use of latest specs.</li>
           </ul>
         <button class="md-close">Close!</button>
       </div>
@@ -202,19 +203,8 @@
   
   <div class="md-overlay"></div>
 
-    <!-- classie.js by @desandro: https://github.com/desandro/classie -->
-    <script src="/js/classie.js"></script>
-    <script src="/js/modalEffects.js"></script>
-
-    <!-- for the blur effect -->
-    <!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
-    <script>
-      // this is important for IEs
-      var polyfilter_scriptpath = '/js/';
-    </script>
-    <script src="/js/cssParser.js"></script>
-    <script src="/js/css-filters-polyfill.js"></script>
-    
+  <script src="/js/classie.js" type="text/javascript"></script>
+  <script src="/js/modalEffects.js" type="text/javascript"></script>    
   <script src="/js/basicmap.js" type="text/javascript"></script>
 </body>
 </html>
