@@ -129,6 +129,10 @@ label {
     font-size: 2em;
 }
 
+.post-list h3 span {
+    font-size: 0.7em;
+}
+
 .note {
     margin: 0;
     padding: .5em;
