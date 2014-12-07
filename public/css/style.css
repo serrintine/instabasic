@@ -1,20 +1,13 @@
 * {
     margin: 0;
+    padding: 0;
 }
 
-/**, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }*/
-/*body, html { font-size: 100%; padding: 0; margin: 0; }*/
-
-/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
-.clearfix:before, .clearfix:after { content: " "; display: table; }
-.clearfix:after { clear: both; }
-
 body {
-    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
     color: #000;
-    /*font-family: 'Lato', Calibri, Arial, sans-serif;
-	/*color: #fff;*/
-	/*background: #e74c3c;*/
+    font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
 h1 {
@@ -24,10 +17,8 @@ h1 {
 button {
 	border: none;
 	padding: 0.2em 0.4em;
-	/*background: #c0392b;*/
 	background: #306596;
 	color: #fff;
-	/*font-family: 'Lato', Calibri, Arial, sans-serif;*/
 	font-size: 1em;
 	cursor: pointer;
 	display: inline-block;
@@ -36,7 +27,6 @@ button {
 }
 
 button:hover {
-	/*background: #A5281B;*/
 	background: #cc4731;
 }
 
@@ -109,7 +99,7 @@ label {
 }
 
 .wrapper {
-    overflow: hidden;
+    /*overflow: hidden;
     zoom: 1; /* fix IE6 bugs with floats */
 }
 
@@ -245,8 +235,14 @@ label {
     font-size: .9em;
 }
 
-.clear br {
-    clear: left;
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
 }
 
 #header {

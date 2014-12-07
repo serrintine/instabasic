@@ -207,7 +207,7 @@
     basic.labels();
     
     BasicMap.basicRankings = function() {
-        console.log('hello');
+        //console.log('hello');
         var tuples = [];
         var data = basic.options.data;
         topFive = '<h3>Top 5 Basic States</h3><br/>';
@@ -364,7 +364,8 @@
                             } else {
                                 break;
                             }
-                            console.log(city.state + ", " + city.name);
+                            
+                            //console.log(city.state + ", " + city.name);
                             basicArr[city.state][city.name] += 1;
                             var state_cities = basicArr[city.state];
                             var basic_count = 0;

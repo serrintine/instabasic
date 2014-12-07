@@ -30,7 +30,6 @@
 	left: 0;
 	z-index: 1000;
 	opacity: 0;
-	/*background: rgba(143,27,15,0.8);*/
 	background: rgba(150,150,150,0.8);
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
@@ -44,8 +43,6 @@
 
 /* Content styles */
 .md-content {
-	/*color: #fff;
-	/*background: #e74c3c;*/
 	background: #fff;
 	position: relative;
 	border-radius: 3px;
