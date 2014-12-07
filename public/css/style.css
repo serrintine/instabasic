@@ -16,8 +16,9 @@ h1 {
 
 ul {
     margin-left: 2em;
+    padding-left: 1em;
     list-style-type: disc;
-    list-style-position: inside;
+    list-style-position: outside;
 }
 
 button {
