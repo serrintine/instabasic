@@ -114,7 +114,7 @@ app.post('/callback', function(req, res) {
     var update = req.body[0];
     res.json({success: true, kind: update.object});
 
-    if (update.time - lastUpdate < 3) return;
+    if (update.time - lastUpdate < 1) return;
     lastUpdate = update.time;
     
     /*for later
