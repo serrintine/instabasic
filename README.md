@@ -25,3 +25,5 @@
 [ ] Comply with HTML5
 
 [ ] Fix color codes for cities with same name
+
+[ ] Button focus outline + more style resetting
