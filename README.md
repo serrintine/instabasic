@@ -16,8 +16,12 @@
 
 [x] Darken states as basicness increases
 
-[ ] Work more on database backend
+[ ] Work more on database backend (parse, look for better service)
 
-[ ] Have only one server query Instagram
+[ ] Have only one server query Instagram, or maybe write cron job
 
 [ ] Make pages prettier with CSS3
+
+[ ] Comply with HTML5
+
+[ ] Fix color codes for cities with same name
